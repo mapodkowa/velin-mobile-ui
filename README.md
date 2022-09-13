@@ -1,27 +1,67 @@
-# VelinMobileUi
+# Nieoficjalny klient Spotify (UI)
+Ten projekt jest jedną z dwóch części nieoficjalnego klienta Spotify na system Android. Interfejs został napisany w języku TypeScript z wykorzystaniem frameworka Angular. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+Interfejs komunikuje się z aplikacją natywną przez wykorzystanie zaprojektowanego "mostu":
+ - Komunikacja w kierunku UI --> Native odbywa się przez funkcję *JavaScript Interface* znajdującą się w module WebView systemu Android (dostępne funkcje zostały opisane w pliku `src/bridge.d.ts`)
+ - Komunikacja Native --> UI odbywa się przez wysyłanie odpowiednich żądań za pomocą `window.postMessage` z poziomu kodu aplikacji natywnej.
+ 
+## Funkcjonalność
+Aplikacja implementuje około 90% funkcjonalności oryginalnej aplikacji.
+Obsługiwane funkcje to:
+ 
+- Logowanie
+- Przeglądanie zawartości (albumy, playlity, utwory, kategorie, itp.)
+- Dodawanie i usuwanie utworów z playlist
+- Dodawanie i usuwanie playlist
+- Obserwowanie playlist
+- Wyszukiwanie
+- Menu kontekstowe
+- Odtwarzacz multimediów
+- Przesyłanie muzyki przez Chromecast
+- Ustawienia
 
-## Development server
+Funkcje, które nie zostały zaimplementowane:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ - Edycja kolejności utworów w playlistach
+ - Pobieranie utworów
 
-## Code scaffolding
+## Środowisko deweloperskie
+W celu uruchomienia projektu należy wykorzystać polecenie `npm start`. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Zostanie wtedy uruchomiony lokalny serwer z uruchomioną aplikacją. Komunikacja z aplikacją natywną jest w takim wypadku symulowana, co pozwala na testowanie aplikacji w przeglądarce internetowej.
 
-## Build
+## Kompilacja
+Projekt nie jest kompilowany bezpośrednio przez dewelopera a poprzez serwer CI/CD (Jenkins) w trakcie kompilacji aplikacji natywnej. Proces kompilacji został dokładniej opisany w dokumentacji aplikacji natywnej.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Zrzuty ekranu
 
-## Running unit tests
+ ### Ekran główny
+![Ekran główny](/media/home.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Przeglądanie treści
+![Przeglądanie treści](/media/browse.png)
 
-## Running end-to-end tests
+### Biblioteka
+![Biblioteka](/media/library.png)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Wyszukiwarka
+![Wyszukiwarka](/media/search.png)
 
-## Further help
+### Widok artysty
+![Widok artysty](/media/artist.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Widok albumu
+![Widok albumu](/media/album.png)
+
+### Widok playlisty
+![Widok playlisty](/media/playlist.png)
+
+### Menu kontekstowe
+![Menu kontekstowe](/media/context_menu.png)
+
+### Odtwarzacz multimediów
+![Odtwarzacz multimediów](/media/player.png)
+
+### Przesyłanie muzyki przez Chromecast
+![Przesyłanie muzyki przez Chromecast](/media/cast.png)
+
