@@ -1,0 +1,8 @@
+<div class="main">
+    <div class="content" #content [@routerAnimation]="prepareRoute(outlet)"
+         (@routerAnimation.start)="animationStartEvent($event)" (scroll)="onContentScroll()">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+    <app-player-mini></app-player-mini>
+    <app-bottom-navigation></app-bottom-navigation>
+</div>

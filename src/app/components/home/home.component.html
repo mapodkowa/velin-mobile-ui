@@ -1,0 +1,18 @@
+<div class="wrapper" appStatusBarDivider>
+    <div class="top">
+        <fa-icon [icon]="faCog" class="icon" (click)="openSettings()"></fa-icon>
+    </div>
+
+    <div class="content">
+        <div class="row" *ngFor="let item of visibleItems">
+            <span class="row-title">{{item.title}}</span>
+            <div class="playlists">
+                <div class="playlist" *ngFor="let item2 of item.content" (click)="onItemClick(item2.uri)">
+                    <img appDefaultImage errorImage="assets/img/empty2.png"
+                         [lazyLoad]="item2.images | image:targetImageSize">
+                    <span class="playlist-title ellipsis-line-2">{{item2.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

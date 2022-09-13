@@ -1,0 +1,44 @@
+<div class="wrapper" appStatusBarDivider>
+    <div class="context-menu" (click)="closeMenu()">
+        <ng-container *ngIf="playlist">
+            <div class="info">
+                <img class="image" appDefaultImage errorImage="assets/img/empty2.png"
+                     [lazyLoad]="playlist.images | image:mainImageSize" alt="">
+                <span class="name ellipsis-line-2">{{playlist.name}}</span>
+                <span class="owner ellipsis-line-1">{{playlist.owner.display_name}}</span>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="track">
+            <div class="info">
+                <img class="image" appDefaultImage errorImage="assets/img/empty2.png"
+                     [lazyLoad]="track.album.images | image:mainImageSize" alt="">
+                <span class="name ellipsis-line-2">{{track.name}}</span>
+                <span class="owner ellipsis-line-1">{{track.artists | artists}}</span>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="album">
+            <div class="info">
+                <img class="image" appDefaultImage errorImage="assets/img/empty2.png"
+                     [lazyLoad]="album.images | image:mainImageSize" alt="">
+                <span class="name ellipsis-line-2">{{album.name}}</span>
+                <span class="owner ellipsis-line-1">{{album.artists | artists}}</span>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="artist">
+            <div class="info">
+                <img class="image round" appDefaultImage errorImage="assets/img/empty2.png"
+                     [lazyLoad]="artist.images | image:mainImageSize" alt="">
+                <span class="name ellipsis-line-2">{{artist.name}}</span>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="items && items.length > 0">
+            <div class="menu-items">
+                <div class="menu-item" *ngFor="let item of items" (click)="onItemClick(item)">
+                    <fa-icon [icon]="item.icon" class="icon" [style.font-size]="item.iconSize"></fa-icon>
+                    <span class="menu-title">{{item.title}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

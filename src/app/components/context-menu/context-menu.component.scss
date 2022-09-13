@@ -1,0 +1,76 @@
+@import '../../scss/colors';
+@import '../../scss/variables';
+
+div.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1500;
+    background: linear-gradient(0deg, rgba(17,17,17,1) 75%, rgba(17,17,17,0.9) 100%);;
+}
+
+div.context-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    height: 100%;
+    overflow-y: auto;
+}
+
+div.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+
+    img.image {
+        width: 9rem;
+        height: 9rem;
+        animation: none;
+    }
+
+    img.image.round {
+        border-radius: 50%;
+    }
+
+    span.name {
+        margin-top: 1rem;
+        font-weight: 600;
+        font-size: 1.05em;
+        text-align: center;
+    }
+
+    span.owner {
+        margin-top: 0.5rem;
+        color: #b3afb3;
+        font-size: 0.9em;
+        text-align: center;
+    }
+}
+
+div.menu-items {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    div.menu-item {
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        width: 100%;
+    }
+
+    span.menu-title {
+        font-weight: 600;
+    }
+
+    .icon {
+        font-size: 1.6em;
+        color: #686868;
+        margin-right: 1.5rem;
+    }
+}

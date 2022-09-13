@@ -1,0 +1,28 @@
+@import 'app/scss/colors';
+@import 'app/scss/variables';
+@import 'fonts/fonts';
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background: $default-background;
+    color: $font-color;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@import "app/scss/modules/image-load-animation";
+@import "app/scss/modules/button";
+@import "app/scss/modules/switch-checkbox";
+@import "app/scss/modules/list";
+@import "app/scss/modules/text";
+@import "app/scss/modules/slider-theme";
+@import "app/scss/modules/snackbar";

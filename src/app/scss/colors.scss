@@ -1,0 +1,35 @@
+// Bottom navigation
+$nav-background: #282729;
+
+// Common
+$default-background: #111111;
+$default-background-gradient: linear-gradient(160deg, #444547 0%, $default-background 15rem);
+$player-background-gradient: linear-gradient(180deg, #444547 0%, $default-background 90%);
+$font-color: #ffffff;
+$font-color-secondary: #8c898c;
+
+// Buttons
+$btn-background-color: #26bf4c;
+$btn-background-color-hover: #30e661;
+$btn-background-color-active: #25b34b;
+$btn-background-color-outline: #1a1a1a;
+$btn-border-color: #afafaf;
+$btn-border-color-outline: #1f993d;
+
+// Slider
+$slider-border-color: #393939;
+$slider-checked: #18b856;
+
+// Player
+$player-artist-color: #b3b3b3;
+$player-time-color: #e2e2e2;
+$player-icon-active: #18a652;
+$playing-track-color: #19b359;
+
+// Progress Bar
+$progress-background: #3f3f3f;
+$progress-value-background: #ffffff;
+$progress-active-background: #18b856;
+
+// Search
+$placeholder-text-secondary-color: #bababa;

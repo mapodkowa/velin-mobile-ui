@@ -1,0 +1,130 @@
+@import '../../scss/colors';
+@import '../../scss/variables';
+
+div.wrapper {
+    width: 100%;
+    height: 100%;
+    //background: linear-gradient(180deg, #4e4e59 0%, $default-background 30rem);
+    display: flex;
+    flex-direction: column;
+}
+
+div.top-bar {
+    display: flex;
+    padding: 0.8rem 1rem;
+    position: fixed;
+    //background: #4e4e59;
+    z-index: 200;
+    width: 100%;
+
+    .icon-back {
+        font-size: 1.6em;
+    }
+
+    .icon-menu {
+        font-size: 1.6em;
+        margin-left: auto;
+    }
+
+    .artist-name {
+        align-self: center;
+        margin-left: auto;
+        font-weight: 600;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+div.artist-top {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    div.overlay {
+        position: absolute;
+        width: 100%;
+        height: 40vh;
+        background: linear-gradient(0deg, $default-background 0%, rgba(0,0,0,0) 100%);
+        z-index: 90;
+    }
+
+    img.image {
+        height: 40vh;
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+    div.text {
+        position: absolute;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        top: 100%;
+        width: 100%;
+        padding-bottom: 1rem;
+        transform: translateY(-100%);
+
+        span.name {
+            font-weight: 800;
+            font-size: 3em;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            text-align: center;
+        }
+
+        span.followers {
+            font-weight: 300;
+            font-size: 0.75em;
+            color: #dedede;
+        }
+    }
+}
+
+div.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+
+    div.random {
+        display: flex;
+        justify-content: center;
+    }
+
+    div.section {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        span.section-title {
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+    }
+}
+
+span.top-track-index {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: -0.5rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+    font-size: 0.9em;
+    font-weight: 300;
+    align-self: center;
+    text-align: center;
+    line-height: 3rem;
+}
+
+img.artist-image {
+    width: 5rem;
+    height: 5rem;
+}
+
+div.list-items-artists {
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+}

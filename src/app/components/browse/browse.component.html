@@ -1,0 +1,16 @@
+<div class="wrapper" appStatusBarDivider>
+    <span class="title">Szukaj</span>
+    <div class="search-container">
+        <div class="search-bar" (click)="onSearchClick()">
+            <fa-icon [icon]="faSearch" class="icon"></fa-icon>
+            <span class="search-placeholder">Wykonawcy, utwory, playlisty</span>
+        </div>
+    </div>
+    <span class="section">Przeglądaj wszystko</span>
+    <div class="categories">
+        <div class="category" *ngFor="let item of categories" [appRandomColorSeed]="item.id" (click)="onCategoryClick(item)">
+            <span class="category-title">{{item.name}}</span>
+            <img class="card" appDefaultImage errorImage="assets/img/empty2.png" [lazyLoad]="item.icons | image:categoryImageSize">
+        </div>
+    </div>
+</div>

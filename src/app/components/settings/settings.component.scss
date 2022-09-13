@@ -1,0 +1,230 @@
+@import '../../scss/variables';
+@import '../../scss/colors';
+
+div.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+div.top-bar {
+  display: flex;
+  padding: 0.8rem 1rem;
+  position: fixed;
+  background: #282828;
+  z-index: 100;
+  width: 100%;
+
+  .icon-back {
+    font-size: 1.6em;
+  }
+
+  div.center {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+
+    span.title {
+      font-weight: 600;
+      font-size: 1.05em;
+    }
+  }
+}
+
+div.profile {
+  width: 100%;
+  display: flex;
+  margin-top: 4.5rem;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  align-items: center;
+
+  div.icon {
+    background-color: #509BF6;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span.letter {
+      font-size: 1.2em;
+      font-weight: 800;
+      color: $default-background;
+    }
+  }
+
+  div.info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+
+    span.display-name {
+      font-weight: 500;
+      font-size: 1.2em;
+      margin-right: 1rem;
+    }
+
+    span.view {
+      color: #a3a3a3;
+      font-size: 0.75em;
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+  }
+
+  .icon-open {
+    margin-left: auto;
+  }
+}
+
+div.category {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 0.8rem;
+
+  span.category-name {
+    font-weight: 600;
+    font-size: 1em;
+    margin-bottom: 1.5rem;
+  }
+
+  div.item {
+    display: flex;
+    margin-bottom: 2rem;
+
+    div.info {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-left: -0.5rem;
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+
+      span.item-name {
+        font-size: 0.85em;
+        font-weight: 500;
+      }
+
+      span.item-subtitle {
+        margin-top: 0.4rem;
+        font-size: 0.7em;
+        color: #a3a3a3;
+      }
+    }
+
+    div.option {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    div.chart-option {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+
+    div.slider-option {
+      display: flex;
+      width: 100%;
+      align-items: center;
+
+      span.slider-text {
+        white-space:nowrap;
+        font-size: 0.8em;
+        color: #a3a3a3;
+      }
+    }
+  }
+
+  div.multi-line {
+    flex-flow: row wrap;
+  }
+}
+
+div.chart {
+  width: 100%;
+  height: 0.6rem;
+  border-radius: 1rem;
+  display: flex;
+
+  div.bar {
+    width: 0;
+    height: 100%;
+  }
+
+  div.bar:first-child {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
+}
+
+.chart-color-blue {
+  background-color: #2D77D0;
+}
+
+.chart-color-green {
+  background-color: #19b359;
+}
+
+.chart-color-gray {
+  background-color: #B3B3B3;
+}
+
+.chart-color-dark-gray {
+  background-color: #535353;
+}
+
+div.chart-details {
+  display: flex;
+  margin-top: 1rem;
+
+  div.chart-legend {
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.chart-legend-values {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+
+    span.value {
+      margin-bottom: 0.5rem;
+      font-size: 0.9em;
+    }
+  }
+
+  div.chart-bar-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    div.color {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 1rem;
+    }
+
+    span.title {
+      margin-left: 0.5rem;
+      font-size: 0.9em;
+    }
+  }
+}
+
+select {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  width: 35vw
+}
+
+select:focus {
+  outline: none;
+}

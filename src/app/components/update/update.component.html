@@ -1,0 +1,27 @@
+<div class="wrapper" appStatusBarDivider>
+    <div class="toolbar">
+        <fa-icon class="icon-close" [icon]="faTimes" (click)="closeMenu()"></fa-icon>
+    </div>
+    <div class="content">
+        <img class="update-image" lazyLoad="assets/img/update.png" appDefaultImage alt=""/>
+
+        <ng-container *ngIf="!update.latestVersion">
+            <span class="text-primary">Sprawdzanie dostępności aktualizacji...</span>
+            <span class="text-secondary">Sprawdź ponownie później</span>
+        </ng-container>
+
+        <ng-container *ngIf="update.latestVersion">
+            <ng-container *ngIf="update.latestVersion.updateAvailable">
+                <span class="text-primary">Dostępna nowa wersja aplikacji</span>
+                <span class="text-secondary">Wciśnij poniższy przycisk aby pobrać i zaktualizować aplikację do wersji {{update.latestVersion.name}}</span>
+                <div class="actions">
+                    <button class="btn btn-lg btn-dark" [disabled]="buttonDisabled" (click)="buttonClick()">{{statusButton}}</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!update.latestVersion.updateAvailable">
+                <span class="text-primary">Posiadasz najnowszą wersję aplikacji</span>
+                <span class="text-secondary">Sprawdź ponownie później</span>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

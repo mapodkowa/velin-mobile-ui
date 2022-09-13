@@ -1,0 +1,6 @@
+<div #bar class="bar">
+    <div class="value" [attr.data-value]="dragEnabled ? value : undefined"
+         [style.width.%]="userValue > -1 ? userValue : value">
+        <div class="position" (touchstart)="positionTouchStart($event)"></div>
+    </div>
+</div>

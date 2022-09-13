@@ -1,0 +1,30 @@
+@import '../colors';
+@import '../variables';
+
+.mat-snack-bar-handset {
+    pointer-events: none;
+}
+
+.mat-snack-bar-container {
+    pointer-events: auto;
+}
+
+.snackbar-margin-nav {
+    margin-bottom: $nav-height + 1rem !important;
+}
+
+.snackbar-margin-nav-player {
+    margin-bottom: $nav-height + $player-height-mini + 1rem !important;
+}
+
+.mat-simple-snackbar {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px;
+    font-weight: 600;
+}

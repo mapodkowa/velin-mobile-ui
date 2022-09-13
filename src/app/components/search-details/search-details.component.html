@@ -1,0 +1,21 @@
+<div class="wrapper" [style.background-image]="'linear-gradient(180deg, ' + backgroundColor + ' 0%, #111111 30rem)'">
+    <div class="top-bar" appStatusBarDivider margin="0.8" [style.background-color]="backgroundColor">
+        <fa-icon class="icon-back" [icon]="faArrowLeft" (click)="onBackClick()"></fa-icon>
+        <span class="title">"{{searchValue}}" w {{searchTypeText}}</span>
+    </div>
+
+    <div class="results list-items" appStatusBarDivider *ngIf="searchItems !== null && paletteLoaded">
+        <div class="item" *ngFor="let item of searchItems; index as i" (click)="onItemClick(item)">
+            <div class="item-content">
+                <img class="image" appDefaultImage errorImage="assets/img/empty2.png"
+                     [ngClass]="{'round': item.type === 'ARTIST'}"
+                     [lazyLoad]="item.images | image:imageSize" alt="">
+                <div class="text-info">
+                    <span class="title" [ngClass]="{'playing': isPlayingFromSearch && item.id === playingTrackId}">{{item.name}}</span>
+                    <span class="subtitle">{{item.subtitle}}</span>
+                </div>
+            </div>
+            <fa-icon class="menu-icon" [icon]="faEllipsisV" (click)="openContextMenu(item)"></fa-icon>
+        </div>
+    </div>
+</div>

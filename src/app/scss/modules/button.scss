@@ -1,0 +1,65 @@
+@import '../colors';
+@import '../variables';
+
+.btn {
+    padding: 0.7rem 2rem;
+    border-radius: 20px;
+    border: none;
+    color: black;
+    text-transform: uppercase;
+    font-size: 0.72em;
+    letter-spacing: 1px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.btn-round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5rem;
+    border-radius: 1rem;
+    border: 2px $btn-border-color solid;
+    width: 2rem;
+    height: 2rem;
+    color: white;
+}
+
+.btn-primary {
+    background-color: $btn-background-color;
+    color: $font-color;
+}
+
+.btn-primary-outline {
+    background-color: $btn-background-color-outline;
+    border: 2px $btn-border-color-outline solid;
+    color: $font-color;
+    padding: 0.3rem 1.2rem;
+    font-size: 0.65em;
+}
+
+.btn-dark {
+    background-color: #1c1c1c;
+    border: 1px $btn-border-color solid;
+    color: $font-color;
+}
+
+.btn-sm {
+    font-size: 0.68em;
+    padding: 0.6rem 1.8rem;
+}
+
+.btn-lg {
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 1rem 2.8rem;
+}
+
+.btn-primary:active {
+    background-color: $btn-background-color-active;
+}
+
+.btn:active, .btn-round:active {
+    transform: scale(0.98);
+}

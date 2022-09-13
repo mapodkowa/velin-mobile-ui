@@ -1,0 +1,39 @@
+@import '../../scss/colors';
+@import '../../scss/variables';
+
+div.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.5s ease;
+}
+
+div.top-bar {
+    display: flex;
+    padding: 0.8rem 1rem;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    align-content: center;
+
+    .icon-back {
+        font-size: 1.6em;
+    }
+
+    div.top-bar-title {
+        display: flex;
+    }
+
+    span.title {
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: 1rem;
+        font-weight: 600;
+    }
+}
+
+div.results {
+    margin-top: 5rem;
+}

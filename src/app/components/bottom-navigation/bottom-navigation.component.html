@@ -1,0 +1,6 @@
+<div class="nav">
+    <div class="item" *ngFor="let item of items" [ngClass]="{'active': selectedItem === item}" (click)="onItemClick(item)">
+        <fa-icon [icon]="item.icon" class="icon"></fa-icon>
+        <span class="name">{{item.name}}</span>
+    </div>
+</div>

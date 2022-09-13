@@ -1,0 +1,28 @@
+<div class="wrapper" appStatusBarDivider>
+    <div class="toolbar">
+        <fa-icon class="icon-close" [icon]="faTimes" (click)="closeMenu()"></fa-icon>
+        <fa-icon class="icon-help" [icon]="faQuestionCircle"></fa-icon>
+    </div>
+    <div class="cast">
+        <div class="intro">
+            <img class="image" lazyLoad="assets/img/devices.jpg" appDefaultImage reflowWidth="650" reflowHeight="281" alt=""/>
+            <span class="text-primary">Połącz z urządzeniem</span>
+            <span class="text-secondary">Użyj swojego telefonu do sterowania multimediami</span>
+        </div>
+        <div class="devices">
+            <div class="device"
+                 *ngFor="let device of cast.devices" [ngClass]="{'active': cast.activeDeviceId === device.id}"
+                 (click)="onDeviceClick(device)">
+                <fa-icon class="icon-phone" *ngIf="device.deviceType === 0" [icon]="faMobileAlt"></fa-icon>
+                <fa-icon class="icon-tv" *ngIf="device.deviceType === 1" [icon]="faTv"></fa-icon>
+                <div class="text">
+                    <span class="text-primary">{{device.name}}</span>
+                    <span class="text-secondary" *ngIf="device.deviceType === 0"
+                          [ngClass]="{'active': cast.activeDeviceId === device.id}">Android</span>
+                    <span class="text-secondary" *ngIf="device.deviceType === 1"
+                          [ngClass]="{'active': cast.activeDeviceId === device.id}">Google Cast</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

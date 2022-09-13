@@ -1,0 +1,89 @@
+@import '../../scss/colors';
+@import '../../scss/variables';
+
+div.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+div.top-bar {
+    display: flex;
+    padding: 0.8rem 1rem;
+    position: fixed;
+    //background: #4e4e59;
+    z-index: 100;
+    width: 100%;
+
+    .icon-back {
+        font-size: 1.6em;
+    }
+
+    .icon-menu {
+        font-size: 1.6em;
+        margin-left: auto;
+    }
+
+    span.playlist-title {
+        align-self: center;
+        margin-left: auto;
+        font-weight: 600;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+div.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+
+    img.main-image {
+        width: 12rem;
+        height: 12rem;
+    }
+
+    span.playlist-name {
+        font-weight: 600;
+        margin-top: 1.5rem;
+        font-size: 1.4em;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-primary-outline {
+        margin-top: 0.35rem;
+        margin-bottom: 0.35rem;
+        font-weight: 600;
+    }
+
+    span.owner {
+        font-size: 0.8em;
+        font-weight: 600;
+        color: $font-color-secondary;
+    }
+
+    button.btn-random {
+        margin-top: 1rem;
+    }
+
+    div.download {
+        display: flex;
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-top: 1rem;
+
+        span.download-text {
+            font-weight: 500;
+        }
+
+        label.switch {
+            margin-left: auto;
+        }
+    }
+}
+
+

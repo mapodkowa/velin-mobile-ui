@@ -1,0 +1,43 @@
+<div class="wrapper" [style.background-image]="'linear-gradient(180deg, ' + backgroundColor + ' 0%, #111111 30rem)'">
+    <ng-container *ngIf="album">
+        <div class="top-bar" appStatusBarDivider margin="0.8" [style.background-color]="backgroundColor">
+            <fa-icon class="icon-back" [icon]="faArrowLeft" (click)="onBackClick()"></fa-icon>
+            <span class="album-name ellipsis-line-1">{{ album.name }}</span>
+            <fa-icon class="icon-like" [icon]="faHeart"></fa-icon>
+            <fa-icon class="icon-menu" [icon]="faEllipsisV" (click)="openContextMenu()"></fa-icon>
+        </div>
+        <div class="info" appStatusBarDivider>
+            <img class="main-image" appDefaultImage errorImage="assets/img/empty2.png"
+                 [lazyLoad]="album.images | image:mainImageSize" alt="">
+            <span class="album-name ellipsis-line-2">{{album.name}}</span>
+            <span class="owner">Album wykonawcy {{album.artists[0].name}} &bull; {{album.release_date | date:'YYYY'}}</span>
+            <button class="btn btn-primary btn-lg btn-random" (click)="onPlayRandomClick()">ODTWARZAJ LOSOWO</button>
+        </div>
+        <div class="list-items">
+            <div class="item" *ngFor="let item of album.tracks.items; index as i">
+                <div class="item-content" (click)="onTrackClick(item, i)">
+                    <div class="text-info no-image">
+                        <span class="title" [ngClass]="{'playing': isAlbumPlaying && i === playingTrackIndex}">{{item.name}}</span>
+                        <span class="subtitle">{{item.artists | artists}}</span>
+                    </div>
+                </div>
+                <fa-icon class="menu-icon" [icon]="faEllipsisV" (click)="openTrackContextMenu(item)"></fa-icon>
+            </div>
+        </div>
+        <div class="details">
+            <span class="details-text">{{album.release_date | date:'longDate'}}</span>
+            <span class="details-text">{{album.tracks.total}} utworów &bull; {{album.tracks.items | tracksDuration}}</span>
+        </div>
+        <div class="list-items" *ngIf="artists">
+            <div class="item" *ngFor="let item of artists">
+                <div class="item-content" (click)="onArtistClick(item)">
+                    <img class="image round" appDefaultImage errorImage="assets/img/empty2.png"
+                         [lazyLoad]="item.images | image:artistImageSize" alt="">
+                    <div class="text-info">
+                        <span class="title">{{item.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

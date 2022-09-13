@@ -1,0 +1,27 @@
+@import '../colors';
+@import '../variables';
+
+.custom-slider {
+  width: 100%;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+}
+
+.mat-accent .mat-slider-thumb {
+  background-color: $slider-checked;
+}
+
+.mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  background-color: $slider-checked;
+}
+
+.mat-slider-horizontal .mat-slider-thumb-label {
+  width: 40px;
+  height: 40px;
+  top: -48px !important;
+  right: -20px !important;
+
+  .mat-slider-thumb-label-text {
+    font-size: 0.7em;
+  }
+}

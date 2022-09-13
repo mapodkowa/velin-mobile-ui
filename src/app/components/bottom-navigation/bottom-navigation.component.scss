@@ -1,0 +1,48 @@
+@import '../../scss/colors';
+@import '../../scss/variables';
+
+div.nav {
+    height: $nav-height;
+    width: 100%;
+    background: $nav-background;
+    display: flex;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+div.item {
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    color: #999799;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    transform: translateZ(0);
+    transition: transform .08s ease-in-out;
+
+    .icon {
+        font-size: 1.4em;
+    }
+
+    .name {
+        font-size: 0.6em;
+        font-weight: 400;
+        margin-top: 0.1rem;
+        font-smoothing: antialiased !important;
+    }
+}
+
+div.item.active {
+    color: white;
+}
+
+div.item:active {
+    transform: scale3d(0.96, 0.96, 0.96);
+    color: lighten($nav-background, 35%);
+    //font-size: 0.95em;
+}

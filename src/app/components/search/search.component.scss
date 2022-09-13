@@ -1,0 +1,122 @@
+@import '../../scss/colors';
+@import '../../scss/variables';
+
+div.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.5s ease;
+}
+
+div.top-bar {
+    display: flex;
+    padding: 0.8rem 1rem;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    transition: background-color 0.5s ease;
+
+    .icon-back {
+        font-size: 1.6em;
+    }
+
+    .invisible {
+        visibility: hidden;
+    }
+
+    input.search-input {
+        width: 100%;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        background: inherit;
+        color: white;
+        font-weight: 500;
+        font-size: 1.05em;
+        text-decoration: underline;
+        border: none;
+    }
+
+    input.search-input:focus {
+        border: none;
+        outline: none;
+    }
+
+    span.search-text {
+        position: absolute;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 700;
+        pointer-events: none;
+    }
+}
+
+div.placeholder {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    width: calc(100% - 4rem);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    transform: translateY(-50%);
+
+    span.text-primary {
+        font-weight: 600;
+        font-size: 1.1em;
+        margin-bottom: 0.5rem;
+    }
+
+    span.text-secondary {
+        font-size: 0.8em;
+        color: $placeholder-text-secondary-color;
+    }
+}
+
+div.history {
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $default-background;
+    height: 100%;
+
+    span.history-text {
+        font-weight: 700;
+        margin-top: 1.5rem;
+        font-size: 1.05em;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    div.list-items {
+        margin-top: 1.25rem;
+
+        .menu-icon {
+            font-size: 1.5em;
+            color: #5a5a5a;
+        }
+    }
+}
+
+div.results {
+    margin-top: 5rem;
+}
+
+div.all {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-bottom: 0.5rem;
+
+    span {
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+        font-weight: 500;
+        font-size: 0.95em;
+    }
+}

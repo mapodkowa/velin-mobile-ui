@@ -1,0 +1,26 @@
+@import 'scss/colors';
+@import 'scss/variables';
+
+div.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+div.content {
+    width: 100%;
+    height: calc(100% - #{$nav-height});
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.content::-webkit-scrollbar {
+    display: none;
+}
+
+router-outlet ~ * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}

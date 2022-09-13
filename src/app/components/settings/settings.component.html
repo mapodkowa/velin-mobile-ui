@@ -1,0 +1,79 @@
+<div class="wrapper">
+    <div class="top-bar" appStatusBarDivider margin="0.8">
+        <fa-icon class="icon-back" [icon]="faArrowLeft" (click)="onBackClick()"></fa-icon>
+        <div class="center">
+            <span class="title">Ustawienia</span>
+        </div>
+    </div>
+    <ng-container *ngIf="profile && items && stats">
+        <div class="profile" appStatusBarDivider>
+            <div class="icon"><span class="letter">{{profile.display_name | firstLetter}}</span></div>
+            <div class="info">
+                <span class="display-name ellipsis-line-1">{{profile.display_name}}</span>
+                <span class="view">Wyświetl profil</span>
+            </div>
+            <fa-icon class="icon-open" [icon]="faChevronRight"></fa-icon>
+        </div>
+        <div class="category" *ngFor="let category of items">
+            <span class="category-name">{{category.title}}</span>
+            <div class="item" matRipple [matRippleDisabled]="item.type !== 2"
+                 *ngFor="let item of category.items" (click)="onItemClick(item)" [ngClass]="{'multi-line': item.type === 5}">
+                <div class="info" *ngIf="item.title.length > 0">
+                    <span class="item-name">{{item.title}}</span>
+                    <span class="item-subtitle" *ngIf="item.subtitle.length > 0">{{item.subtitle}}</span>
+                </div>
+                <div class="option" *ngIf="item.type === 0">
+                    <label class="switch">
+                        <input type="checkbox" [(ngModel)]="item.value" (ngModelChange)="onItemValueChanged(item)">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="option" *ngIf="item.type === 1">
+                    <select name="options" [(ngModel)]="item.optionValue" (ngModelChange)="onItemValueChanged(item)">
+                        <option value="{{option.value}}" *ngFor="let option of item.options">{{option.title}}</option>
+                    </select>
+                </div>
+                <div class="chart-option" *ngIf="item.type === 3">
+                    <div class="chart chart-color-dark-gray">
+                        <div class="bar chart-color-blue" [style.width]="otherAppsGraphBar"></div>
+                        <div class="bar chart-color-green" *ngIf="stats.mediaSize > 0" [style.width]="mediaGraphBar"></div>
+                        <div class="bar chart-color-gray" *ngIf="stats.cacheSize > 0" [style.width]="cacheGraphBar"></div>
+                    </div>
+                    <div class="chart-details">
+                        <div class="chart-legend">
+                            <div class="chart-bar-info">
+                                <div class="color chart-color-blue"></div>
+                                <span class="title">Inne aplikacje</span>
+                            </div>
+                            <div class="chart-bar-info" *ngIf="stats.mediaSize > 0">
+                                <div class="color chart-color-green"></div>
+                                <span class="title">Pobrane</span>
+                            </div>
+                            <div class="chart-bar-info" *ngIf="stats.cacheSize > 0">
+                                <div class="color chart-color-gray"></div>
+                                <span class="title">Pamięć podręczna</span>
+                            </div>
+                            <div class="chart-bar-info">
+                                <div class="color chart-color-dark-gray"></div>
+                                <span class="title">Wolne</span>
+                            </div>
+                        </div>
+                        <div class="chart-legend-values">
+                            <span class="value">{{stats.usedSpace | formatBytes:1}}</span>
+                            <span class="value" *ngIf="stats.mediaSize > 0">{{stats.mediaSize | formatBytes:1}}</span>
+                            <span class="value" *ngIf="stats.cacheSize > 0">{{stats.cacheSize | formatBytes:1}}</span>
+                            <span class="value">{{stats.freeSpace | formatBytes:1}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-option" *ngIf="item.type === 5">
+                    <span class="slider-text">128 MB</span>
+                    <mat-slider class="custom-slider" min="128" max="5120" step="128" thumbLabel="true"
+                                [displayWith]="formatSizeLabel.bind(this)" [(ngModel)]="item.optionValue"
+                                (ngModelChange)="onItemValueChanged(item)"></mat-slider>
+                    <span class="slider-text">5 GB</span>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,42 @@
+<div class="wrapper" [style.background-image]="'linear-gradient(180deg, ' + backgroundColor + ' 0%, #111111 30rem)'">
+    <div class="top-bar" appStatusBarDivider margin="0.8" [style.background-color]="backgroundColor">
+        <fa-icon class="icon-back" [icon]="faArrowLeft" (click)="onBackClick()"></fa-icon>
+        <span *ngIf="playlist" class="playlist-title ellipsis-line-1" [style.opacity]="topBarAlpha">{{playlist.name}}</span>
+        <fa-icon class="icon-menu" [icon]="faEllipsisV" (click)="openContextMenu()"></fa-icon>
+    </div>
+    <ng-container *ngIf="playlist">
+        <div class="info" appStatusBarDivider>
+            <img class="main-image" appDefaultImage errorImage="assets/img/empty2.png"
+                 [lazyLoad]="playlist.images | image:mainImageSize" alt="">
+            <span class="playlist-name">{{playlist.name}}</span>
+            <ng-container *ngIf="isPublic">
+                <button class="btn btn-primary-outline" *ngIf="isFollowed" (click)="unFollowPlaylist()">Obserwowana</button>
+                <button class="btn btn-primary-outline" *ngIf="!isFollowed" (click)="followPlaylist()">Obserwuj</button>
+            </ng-container>
+            <span class="owner">użytkownika {{playlist.owner.display_name}}</span>
+
+            <button class="btn btn-primary btn-lg btn-random" (click)="onPlayRandomClick()">ODTWARZAJ LOSOWO</button>
+
+            <div class="download">
+                <span class="download-text">Pobieranie</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+        <div class="list-items">
+            <div class="item" *ngFor="let item of playlist.tracks.items; index as i">
+                <div class="item-content" (click)="onTrackClick(item.track, i)">
+                    <img class="image" appDefaultImage errorImage="assets/img/empty2.png"
+                         [lazyLoad]="item.track.album.images | image:trackImageSize">
+                    <div class="text-info">
+                        <span class="title" [ngClass]="{'playing': isPlaylistPlaying && i === playingTrackIndex}">{{item.track.name}}</span>
+                        <span class="subtitle">{{item.track.artists | artists}}</span>
+                    </div>
+                </div>
+                <fa-icon class="menu-icon" [icon]="faEllipsisV" (click)="openTrackContextMenu(item.track)"></fa-icon>
+            </div>
+        </div>
+    </ng-container>
+</div>

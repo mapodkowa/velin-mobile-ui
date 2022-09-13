@@ -1,0 +1,18 @@
+img {
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+img.ng-lazyloaded {
+    animation: fadein 0.4s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

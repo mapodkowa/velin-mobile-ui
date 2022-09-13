@@ -1,0 +1,54 @@
+<div class="wrapper">
+    <div class="top-bar" appStatusBarDivider margin="0.8" [style.background-color]="topBarBackgroundColor">
+        <fa-icon class="icon-back" [icon]="faArrowLeft" (click)="onBackClick()"></fa-icon>
+        <span *ngIf="artist" class="artist-name ellipsis-line-1" [style.opacity]="topBarAlpha">{{artist.name}}</span>
+        <fa-icon class="icon-menu" [icon]="faEllipsisV" (click)="openContextMenu()"></fa-icon>
+    </div>
+    <ng-container *ngIf="artist !== undefined">
+        <div class="artist-top">
+            <div class="overlay"></div>
+            <img class="image" appDefaultImage [lazyLoad]="artist.images | image:mainImageSize"/>
+            <div class="text">
+                <span class="name" appFitText>{{artist.name}}</span>
+                <span class="followers">SŁUCHACZE W W TYM MIESIĄCU: {{artist.followers.total | numberWithSpaces}}</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="random">
+                <button class="btn btn-primary btn-lg btn-random">ODTWARZAJ LOSOWO</button>
+            </div>
+            <div class="section" *ngIf="topTracks !== undefined && topTracks.length > 0">
+                <span class="section-title">Popularne</span>
+                <div class="list-items">
+                    <div class="item" *ngFor="let item of topTracks; index as i">
+                        <div class="item-content" (click)="onTrackClick(item, i)">
+                            <span class="top-track-index">{{i + 1}}</span>
+                            <img class="image" appDefaultImage errorImage="assets/img/empty2.png"
+                                 [lazyLoad]="item.album.images | image:trackImageSize">
+                            <div class="text-info">
+                                <span class="title" [ngClass]="{'playing': isPlaying && i === playingTrackIndex}">{{item.name}}</span>
+                                <span class="subtitle">{{item.artists | artists}}</span>
+                            </div>
+                        </div>
+                        <fa-icon class="menu-icon" [icon]="faEllipsisV" (click)="openTrackContextMenu(item)"></fa-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="section" *ngIf="albums !== undefined && albums.length > 0">
+                <span class="section-title">Nowe wydania</span>
+                <div class="list-items list-items-artists">
+                    <div class="item" *ngFor="let item of albums">
+                        <div class="item-content" (click)="onAlbumClick(item)">
+                            <img class="artist-image" appDefaultImage errorImage="assets/img/empty2.png"
+                                 [lazyLoad]="item.images | image:trackImageSize">
+                            <div class="text-info">
+                                <span class="title">{{item.name}}</span>
+                                <span class="subtitle">{{item.release_date | date:'yyyy'}} &bull; {{item.album_type | titlecase}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

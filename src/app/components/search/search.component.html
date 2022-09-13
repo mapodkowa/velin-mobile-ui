@@ -1,0 +1,57 @@
+<div class="wrapper" [style.background-image]="'linear-gradient(180deg, ' + backgroundColor + ' 0%, #111111 30rem)'">
+    <div class="top-bar" appStatusBarDivider margin="0.8" [style.background-color]="backgroundColor">
+        <fa-icon class="icon-back" [icon]="faArrowLeft" (click)="onBackClick()"></fa-icon>
+        <input class="search-input" type="text" spellcheck="false" appFocus [autoFocus]="inputAutoFocus"
+               (keyup)="onSearchChanged($event)" [(ngModel)]="searchValue" (focusin)="inputFocusIn()"
+               (focusout)="inputFocusOut()"/>
+        <fa-icon class="icon-back" [icon]="faTimes" (click)="clearSearch()"
+                 [class.invisible]="searchValue.length === 0"></fa-icon>
+        <span class="search-text" *ngIf="searchItems === null && !inputFocused"
+              [@fadeInOutAnimation] appStatusBarDivider>Wyszukaj</span>
+    </div>
+
+    <div class="placeholder" *ngIf="searchItems === null && history.items.length === 0">
+        <span class="text-primary">Odtwarzaj to co kochasz</span>
+        <span class="text-secondary">Znajdź ulubione utwory, albumy, playlisty oraz wykonawców.</span>
+    </div>
+
+    <div class="history" appStatusBarDivider *ngIf="searchItems === null && history.items.length > 0">
+        <span class="history-text">Ostatnio wyszukiwane</span>
+        <div class="list-items">
+            <div class="item" [@fadeInOutAnimation] *ngFor="let item of history.items; index as i" (click)="onItemClick(item, i, true)">
+                <div class="item-content">
+                    <img class="image" appDefaultImage errorImage="assets/img/empty2.png"
+                         [ngClass]="{'round': item.type === 'ARTIST'}"
+                         [lazyLoad]="item.images | image:imageSize" alt="">
+                    <div class="text-info">
+                        <span class="title" [ngClass]="{'playing': (isPlayingFromHistory || isPlayingFromSearch) && item.id === playingTrackId}">{{item.name}}</span>
+                        <span class="subtitle">{{item.subtitle}}</span>
+                    </div>
+                </div>
+                <fa-icon class="menu-icon" [icon]="faTimes" (click)="removeItemFromHistory(i)"></fa-icon>
+            </div>
+        </div>
+    </div>
+
+    <div class="results list-items" appStatusBarDivider *ngIf="searchItems !== null">
+        <div class="item" *ngFor="let item of searchItems; index as i" (click)="onItemClick(item, i)">
+            <div class="item-content">
+                <img class="image" appDefaultImage errorImage="assets/img/empty2.png"
+                     [ngClass]="{'round': item.type === 'ARTIST'}"
+                     [lazyLoad]="item.images | image:imageSize" alt="">
+                <div class="text-info">
+                    <span class="title" [ngClass]="{'playing': (isPlayingFromHistory || isPlayingFromSearch) && item.id === playingTrackId}">{{item.name}}</span>
+                    <span class="subtitle">{{item.subtitle}}</span>
+                </div>
+            </div>
+            <fa-icon class="menu-icon" [icon]="faEllipsisV" (click)="openContextMenu(item)"></fa-icon>
+        </div>
+    </div>
+
+    <div class="all" *ngIf="searchItems !== null">
+        <span (click)="showDetails('artist')">Pokaż wszystkich artystów</span>
+        <span (click)="showDetails('track')">Pokaż wszystkie utwory</span>
+        <span (click)="showDetails('playlist')">Pokaż wszystkie playlisty</span>
+        <span (click)="showDetails('album')">Pokaż wszystkie albumy</span>
+    </div>
+</div>

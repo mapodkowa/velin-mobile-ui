@@ -1,0 +1,18 @@
+<div class="wrapper" appStatusBarDivider>
+    <span class="title">Muzyka</span>
+    <div class="tabs">
+        <span class="tab selected">Playlisty</span>
+        <span class="tab">Wykonawcy</span>
+        <span class="tab">Albumy</span>
+    </div>
+    <div class="playlists">
+        <div class="playlist" *ngFor="let item of playlists" appLongPress (shortPress)="press(item)" (longPress)="longPress(item)">
+            <img appDefaultImage errorImage="assets/img/empty2.png" [lazyLoad]="item.images | image: imageSize">
+            <div class="content">
+                <span class="name" [ngClass]="{'playing': player.playerState !== undefined &&
+                item.uri === player.playerState.source.uri}">{{item.name}}</span>
+                <span class="owner">użytkownika {{item.owner.display_name}}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="player" *ngIf="player.playerState !== undefined && player.playerState.track !== undefined"
+     (click)="onPlayerClick()">
+    <div class="progress-bar">
+        <div class="bar" [ngStyle]="{'transform': 'translateX(' + position + '%)'}"></div>
+    </div>
+    <img class="album-image" appDefaultImage errorImage="assets/img/empty2.png"
+         [lazyLoad]="player.playerState.track.albumImages | image:trackImageSize" alt=""/>
+    <span class="text">
+        <span class="title">{{player.playerState.track.name}}</span>
+        &bull;
+        <span class="artist">{{player.playerState.track.artists}}</span>
+    </span>
+    <div class="buttons">
+        <fa-icon class="like-button" [icon]="faHeart"></fa-icon>
+        <fa-icon [icon]="faPlay" *ngIf="player.playerState.playbackStatus === 'PAUSED'" (click)="onPlayClick($event)"></fa-icon>
+        <fa-icon [icon]="faPause" *ngIf="player.playerState.playbackStatus == 'PLAYING'" (click)="onPauseClick($event)"></fa-icon>
+    </div>
+</div>
