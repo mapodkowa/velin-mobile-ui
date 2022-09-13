@@ -65,3 +65,6 @@ Projekt nie jest kompilowany bezpośrednio przez dewelopera a poprzez serwer CI/
 ### Przesyłanie muzyki przez Chromecast
 ![Przesyłanie muzyki przez Chromecast](/media/cast.png)
 
+### Ustawienia
+![Ustawienia](/media/settings.png)
+
